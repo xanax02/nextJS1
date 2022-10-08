@@ -1,5 +1,6 @@
 import Link from "next/link";
 import React from "react";
+import classes from "./EventItem.module.css";
 
 const EventItem = (props) => {
   const { id, title, date, location, image } = props;
@@ -13,21 +14,24 @@ const EventItem = (props) => {
   const newLocation = location.replace(", ", "\n");
 
   return (
-    <div>
+    <li className={classes.item}>
       <img src={`/${image}`} alt="image" />
-      <div>
-        <div>
+      <div className={classes.content}>
+        <div className={classes.summary}>
           <h2>{title}</h2>
+          <div className={classes.date}>
+            <time>{redableDate}</time>
+          </div>
+          <div className={classes.address}>
+            <address>{newLocation}</address>
+          </div>
         </div>
-        <div>
-          <time>{redableDate}</time>
+        <div className={classes.actions}>
+          <Link href={`/events/${id}`}>Explore Event</Link>
         </div>
-        <div>{newLocation}</div>
       </div>
-      <div>
-        <Link href={`/events/${id}`}>Explore Event</Link>
-      </div>
-    </div>
+      E
+    </li>
   );
 };
 
