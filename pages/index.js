@@ -1,17 +1,12 @@
-import Link from "next/link";
+import { getFeaturedEvents } from "../dummy-data";
+import EventList from "../components/events/EventList";
 
 const HomePage = () => {
+  const events = getFeaturedEvents();
+
   return (
     <div>
-      <h1>HomePage</h1>
-      <ul>
-        <li>
-          <Link href="about">About</Link>
-        </li>
-        <li>
-          <Link href="clients">Clients</Link>
-        </li>
-      </ul>
+      <EventList events={events} />
     </div>
   );
 };
