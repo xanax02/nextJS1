@@ -1,9 +1,21 @@
-const HomePage = () => {
+const HomePage = (props) => {
+  const { Products } = props;
+
   return (
     <div>
-      <h1>HomePage</h1>
+      {Products.map((item) => {
+        return <li>{item.title}</li>;
+      })}
     </div>
   );
 };
+
+export async function getStaticProps() {
+  return {
+    props: {
+      Products: [{ prodId: "p1", title: "Product 1" }],
+    },
+  };
+}
 
 export default HomePage;
