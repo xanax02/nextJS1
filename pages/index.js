@@ -15,6 +15,7 @@ const HomePage = (props) => {
 
 export async function getStaticProps() {
   const filePath = path.join(process.cwd(), "data", "dummy-backend.json");
+  console.log("revalidated");
   // path module is use for building paths
   //  process.cwd() => this method will give the current woking directory of this code file when its executed.
   // current directory will not be the pages folder as:
@@ -32,7 +33,15 @@ export async function getStaticProps() {
     props: {
       Products: data.products,
     },
+    revalidate: 10,
   };
 }
+// getStaticProps will run on server and pre-renders the page, it is partially true as it runs when the whole project is build for deployement
+// so if the data changes in the server(dummy-backend.json) here getStatic props will not run again it the static page will only have the
+// outdated data. To Avoid this there are two options:
+//    ->show the pre-rendered page with outdated data and after that with useEffect request to server for new data
+//    -> use of INCREMETAL_STATIC_GENERATION.
+//        =>here we return a {revalidate} property in getStaticProps function.
+//          => this will always re-render the page on server when the request to page made is after the certain time span given eg(10sec).
 
 export default HomePage;
