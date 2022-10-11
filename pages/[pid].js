@@ -5,9 +5,9 @@ import path from "path";
 const ProductDetailPage = (props) => {
   const { product } = props;
 
-  //   if (!product) {
-  //     return <p>Loading...</p>;               // For the fallback when set to true, till the time data arrives...
-  //   }
+  if (!product) {
+    return <p>Loading...</p>; // For the fallback when set to true, till the time data arrives...
+  }
 
   return (
     <>
@@ -31,6 +31,13 @@ export async function getStaticProps(context) {
   const data = JSON.parse(jsonData);
 
   const prodData = data.products.find((item) => item.id === productId);
+
+  if (!prodData) {
+    return {
+      notFound: true,
+    };
+  }
+
   return {
     props: {
       product: prodData,
@@ -51,7 +58,7 @@ export async function getStaticPaths() {
       // ->when set to true it has been handled in Functional COmponent of the page.
       // -> when set to "blocking" it is handling everything on its own by only loading page when data is available.
     ],
-    fallback: "blocking",
+    fallback: true,
   };
   //getStaticPath will return object having:
   // ->path => array of objects having dynamic routers as a key
