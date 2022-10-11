@@ -1,4 +1,5 @@
 import fs from "fs/promises"; // all imports which are used in getStaticProps will not be provided
+import Link from "next/link";
 import path from "path"; // for the client side rendered page
 
 const HomePage = (props) => {
@@ -7,7 +8,11 @@ const HomePage = (props) => {
   return (
     <div>
       {Products.map((item) => {
-        return <li>{item.title}</li>;
+        return (
+          <li>
+            <Link href={`/${item.id}`}>{item.title}</Link>
+          </li>
+        );
       })}
     </div>
   );
@@ -28,6 +33,24 @@ export async function getStaticProps() {
   // and it will take path from which the data should be read
 
   const data = JSON.parse(jsonData);
+
+  // other 2 properties of return object of getStaticProps
+  //  -> notFOund => boolean
+
+  // if(!data) {
+  //   return {
+  //     notFound: true
+  //   }
+  // }
+
+  // -> redirect => object having destination prop of value route to redirecting page
+  // if(!data) {
+  //   return {
+  //     redirect: {
+  //       destination: '/no-data'
+  //     }
+  //   }
+  // }
 
   return {
     props: {
