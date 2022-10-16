@@ -1,4 +1,4 @@
-// import { getFeaturedEvents } from "../dummy-data";
+import Head from "next/head"; // component of nextJS for head
 import EventList from "../components/events/EventList";
 
 const HomePage = (props) => {
@@ -6,6 +6,13 @@ const HomePage = (props) => {
 
   return (
     <div>
+      <Head>
+        <title>NextJS Events</title>
+        <meta // meta-data for the page
+          name="description"
+          content="Find a lot of great events of NextJS community.."
+        />
+      </Head>
       <EventList events={featuredEvents} />
     </div>
   );
