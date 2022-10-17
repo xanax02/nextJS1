@@ -10,7 +10,7 @@ const HomePage = (props) => {
         <title>NextJS Events</title>
         <meta // meta-data for the page
           name="description"
-          content="Find a lot of great events of NextJS community.."
+          content="Find a lot of great events of NextJS community.. and meet lot of like minded people"
         />
       </Head>
       <EventList events={featuredEvents} />
