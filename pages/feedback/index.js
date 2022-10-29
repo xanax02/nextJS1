@@ -1,13 +1,31 @@
 // pre-rendering this page
+import { useState } from "react";
 import { getFilePath, fileData } from "../api/feedback";
 
 const feedbackPage = (props) => {
+  const [feedbackDetail, setFeedbackDetail] = useState();
+
+  const detailHandler = async (id) => {
+    const response = await fetch(`api/${id}`);
+    const data = await response.json();
+    setFeedbackDetail(data.selectedFeedback.email);
+  };
+
   //   console.log(props.data);
   return (
     <>
       <h1>Feedbacks</h1>
+      {feedbackDetail && <h3>{feedbackDetail}</h3>}
       {props.data.map((item) => {
-        return <h3 key={item.id}>{item.feedback}</h3>;
+        return (
+          <div key={item.id}>
+            <h3>{item.feedback}</h3>
+            <button onClick={detailHandler.bind(null, item.id)}>
+              Show Detail
+            </button>
+            {/* bind is used to preconfigure fn for every id */}
+          </div>
+        );
       })}
     </>
   );
