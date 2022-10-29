@@ -3,13 +3,13 @@ import path from "path";
 
 //utility functions//
 //filePath function
-const getFilePath = () => {
+export const getFilePath = () => {
   const filePath = path.join(process.cwd(), "data", "feedback.json");
   return filePath;
 };
 
 //fileData function for getting data from backend or file(here).
-const fileData = (filePath) => {
+export const fileData = (filePath) => {
   const fileData = fs.readFileSync(filePath);
   const data = JSON.parse(fileData);
   return data;
