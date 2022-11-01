@@ -1,8 +1,8 @@
-import { useState } from 'react';
+import { useState } from "react";
 
-import CommentList from './comment-list';
-import NewComment from './new-comment';
-import classes from './comments.module.css';
+import CommentList from "./comment-list";
+import NewComment from "./new-comment";
+import classes from "./comments.module.css";
 
 function Comments(props) {
   const { eventId } = props;
@@ -13,14 +13,23 @@ function Comments(props) {
     setShowComments((prevStatus) => !prevStatus);
   }
 
-  function addCommentHandler(commentData) {
+  async function addCommentHandler(commentData) {
     // send data to API
+    const response = await fetch("api/comments" + eventId, {
+      method: "POST",
+      body: JSON.stringify(commentData),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const data = await response.json();
+    console.log(data);
   }
 
   return (
     <section className={classes.comments}>
       <button onClick={toggleCommentsHandler}>
-        {showComments ? 'Hide' : 'Show'} Comments
+        {showComments ? "Hide" : "Show"} Comments
       </button>
       {showComments && <NewComment onAddComment={addCommentHandler} />}
       {showComments && <CommentList />}
