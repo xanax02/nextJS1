@@ -18,7 +18,7 @@ export default function Home() {
         </div>
       </header>
       <main>
-      <section className={classes.section}>
+      <section className={styles.section}>
           <h2>How it works</h2>
           <p>
             NextLevel Food is a platform for foodies to share their favorite
@@ -31,7 +31,7 @@ export default function Home() {
           </p>
         </section>
 
-        <section className={classes.section}>
+        <section className={styles.section}>
           <h2>Why NextLevel Food?</h2>
           <p>
             NextLevel Food is a platform for foodies to share their favorite
