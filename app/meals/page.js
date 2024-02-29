@@ -1,5 +1,18 @@
+import Link from "next/link";
+
 export default function MealsPage() {
     return (
-        <h1>Meals Page</h1>
+        <>
+            <header className={styles.header}>
+                <h1>Delicious meals, created <span className={styles.highlight}>by you</span></h1>
+                <p>
+                    Choose you favorite recipe and cook it yourself. It is easy and fun!
+                </p>
+                <p className={styles.cta}>
+                    <Link href={'/meals/share'}>Share your Favorie Recipe</Link>
+                </p>
+            </header>
+            <main className={styles.main}></main>
+        </>
     )
 }
