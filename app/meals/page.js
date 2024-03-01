@@ -4,6 +4,7 @@ import MealsGrid from "@/components/meals/meals-grid/MealsGrid";
 import styles from './page.module.css'
 
 export default function MealsPage() {
+
     return (
         <>
             <header className={styles.header}>
