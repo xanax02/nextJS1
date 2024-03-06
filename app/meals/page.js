@@ -1,4 +1,7 @@
+
+
 import Link from "next/link";
+
 
 import MealsGrid from "@/components/meals/meals-grid/MealsGrid";
 import styles from './page.module.css'
