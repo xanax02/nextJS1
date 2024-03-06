@@ -7,7 +7,7 @@ import styles from './page.module.css';
 export default function MealDetailsPage({params}) {
 
     const meal = getMeal(params.slug);
-    meal.instructions = meal?.instructions?.replace(/\n/g, '</br>');
+    meal.instructions = meal.instructions.replace(/\n/g, '</br>');
 
     if(!meal) {
         notFound();
