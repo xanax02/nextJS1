@@ -6,12 +6,14 @@ import styles from './page.module.css';
 
 export default function MealDetailsPage({params}) {
 
-    const meal = getMeal(params.slug);
-    meal.instructions = meal.instructions.replace(/\n/g, '</br>');
-
+    const meal = getMeal(params.slug);  
     if(!meal) {
+        console.log(
+            "TRUE"
+        )
         notFound();
     }
+    meal.instructions = meal.instructions.replace(/\n/g, '</br>');
 
     return (
        <>
@@ -34,4 +36,6 @@ export default function MealDetailsPage({params}) {
         </main>
        </>
     )
+
+    // return<h1>HELLO</h1>
 }
