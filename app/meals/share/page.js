@@ -9,11 +9,13 @@ export default function ShareMealPage() {
     const meal = {
       title: formData.get('title'),
       summary: formData.get('summary'),
-      instruction: formData.get('instruction'),
+      instruction: formData.get('instructions'),
       image: formData.get('image'),
       creator: formData.get('name'),
       creator_email: formData.get('email')
     }
+
+    console.log(meal);
   }
 
   return (
@@ -53,7 +55,7 @@ export default function ShareMealPage() {
               required
             ></textarea>
           </p>
-          <ImagePicker />
+          <ImagePicker label={"image"} name={"image"} />
           <p className={classes.actions}>
             <button type="submit">Share Meal</button>
           </p>
